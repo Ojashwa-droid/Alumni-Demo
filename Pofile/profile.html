@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div id="editModeAlert" class="edit-mode-container hidden">
+        <i class="fas fa-pencil-alt"></i> Edit mode enabled. Make your changes and click Save.
+    </div>
+
+    <div class="container">
+        <div class="header animate__animated animate__fadeIn">
+            <h1>My Profile</h1>
+            <p>Manage your personal information and account settings</p>
+        </div>
+        
+        <div class="profile-container animate__animated animate__fadeInUp">
+            <div class="profile-sidebar">
+                <div class="profile-image">
+                    <img id="profileImage" src="OIP.jpeg" alt="Profile Picture">
+                    <div class="image-upload">
+                        <label for="uploadImage"><i class="fas fa-camera"></i> Change Photo</label>
+                        <input type="file" id="uploadImage" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">48</div>
+                        <div class="stat-label">Connections</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Years</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-content">
+                <form id="profileForm">
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2 class="section-title"><i class="fas fa-user"></i> Basic Information</h2>
+                            <button type="button" class="edit-btn" data-section="basicInfo">
+                                <i class="fas fa-pen"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <div class="form-fields">
+                            <div class="form-group required">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" disabled required 
+                                       pattern="^[\w\.-]+$" maxlength="150" minlength="1">
+                                <small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" disabled required 
+                                       maxlength="254" minlength="1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <select id="role" name="role" disabled>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                    <option value="editor">Editor</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2 class="section-title"><i class="fas fa-lock"></i> Security</h2>
+                            <button type="button" class="edit-btn" data-section="security">
+                                <i class="fas fa-pen"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <div class="form-fields">
+                            <div class="form-group required">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" disabled 
+                                       minlength="1" placeholder="••••••••">
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="password2">Confirm Password</label>
+                                <input type="password" id="password2" name="password2" disabled 
+                                       minlength="1" placeholder="••••••••">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Information</h2>
+                            <button type="button" class="edit-btn" data-section="professional">
+                                <i class="fas fa-pen"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <div class="form-fields">
+                            <div class="form-group">
+                                <label for="graduation_year">Graduation Year</label>
+                                <input type="number" id="graduation_year" name="graduation_year" disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="current_company">Current Company</label>
+                                <input type="text" id="current_company" name="current_company" disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="job_title">Job Title</label>
+                                <input type="text" id="job_title" name="job_title" disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="linkedin_url">LinkedIn URL</label>
+                                <input type="url" id="linkedin_url" name="linkedin_url" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2 class="section-title"><i class="fas fa-comment-alt"></i> About Me</h2>
+                            <button type="button" class="edit-btn" data-section="about">
+                                <i class="fas fa-pen"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <div class="form-fields">
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" name="bio" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="buttons-container">
+                        <button type="button" id="cancelBtn" class="cancel-btn hidden">Cancel</button>
+                        <button type="submit" id="saveBtn" class="save-btn hidden">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast" class="toast">Changes saved successfully!</div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample data (in a real app, this would come from your backend)
+            const userData = {
+                username: 'johndoe',
+                email: 'john.doe@example.com',
+                role: 'user',
+                graduation_year: 2018,
+                current_company: 'Tech Solutions Inc.',
+                job_title: 'Senior Developer',
+                bio: 'Passionate developer with over 5 years of experience in web technologies. I love creating responsive and user-friendly applications.',
+                linkedin_url: 'https://linkedin.com/in/johndoe'
+            };
+            
+            // Populate the form with user data
+            populateForm(userData);
+            
+            // Image upload preview
+            const uploadImage = document.getElementById('uploadImage');
+            const profileImage = document.getElementById('profileImage');
+            
+            uploadImage.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        profileImage.src = e.target.result;
+                        showToast('Profile picture updated');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Edit buttons functionality
+            const editButtons = document.querySelectorAll('.edit-btn');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const saveBtn = document.getElementById('saveBtn');
+            const editModeAlert = document.getElementById('editModeAlert');
+            
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    enableEditMode(section);
+                    cancelBtn.classList.remove('hidden');
+                    saveBtn.classList.remove('hidden');
+                    editModeAlert.classList.remove('hidden');
+                });
+            });
+            
+            // Cancel button
+            cancelBtn.addEventListener('click', function() {
+                disableEditMode();
+                populateForm(userData);
+                cancelBtn.classList.add('hidden');
+                saveBtn.classList.add('hidden');
+                editModeAlert.classList.add('hidden');
+            });
+            
+            // Form submission
+            const profileForm = document.getElementById('profileForm');
+            
+            profileForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                if (validateForm()) {
+                    // Collect form data
+                    const formData = new FormData(profileForm);
+                    const updatedData = {};
+                    
+                    for (const [key, value] of formData.entries()) {
+                        updatedData[key] = value;
+                    }
+                    
+                    // In a real app, you would send this data to your server
+                    console.log('Saving updated data:', updatedData);
+                    
+                    // Update our user data
+                    Object.assign(userData, updatedData);
+                    
+                    // Reset the form to non-edit mode
+                    disableEditMode();
+                    cancelBtn.classList.add('hidden');
+                    saveBtn.classList.add('hidden');
+                    editModeAlert.classList.add('hidden');
+                    
+                    showToast('Changes saved successfully!');
+                }
+            });
+            
+            // Helper functions
+            function populateForm(data) {
+                for (const [key, value] of Object.entries(data)) {
+                    const input = document.getElementById(key);
+                    if (input) {
+                        input.value = value;
+                    }
+                }
+            }
+            
+            function enableEditMode(section) {
+                let fieldsContainer;
+                
+                switch(section) {
+                    case 'basicInfo':
+                        fieldsContainer = document.querySelector('[data-section="basicInfo"]').closest('.form-section').querySelector('.form-fields');
+                        break;
+                    case 'security':
+                        fieldsContainer = document.querySelector('[data-section="security"]').closest('.form-section').querySelector('.form-fields');
+                        break;
+                    case 'professional':
+                        fieldsContainer = document.querySelector('[data-section="professional"]').closest('.form-section').querySelector('.form-fields');
+                        break;
+                    case 'about':
+                        fieldsContainer = document.querySelector('[data-section="about"]').closest('.form-section').querySelector('.form-fields');
+                        break;
+                }
+                
+                if (fieldsContainer) {
+                    const inputs = fieldsContainer.querySelectorAll('input, select, textarea');
+                    inputs.forEach(input => {
+                        input.disabled = false;
+                    });
+                }
+            }
+            
+            function disableEditMode() {
+                const allInputs = document.querySelectorAll('input, select, textarea');
+                allInputs.forEach(input => {
+                    input.disabled = true;
+                    input.classList.remove('error');
+                    const smallEl = input.nextElementSibling;
+                    if (smallEl && smallEl.tagName === 'SMALL') {
+                        smallEl.textContent = input.getAttribute('data-help-text') || '';
+                    }
+                });
+            }
+            
+            function validateForm() {
+                const inputs = document.querySelectorAll('input:not([disabled]), select:not([disabled]), textarea:not([disabled])');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    // Reset previous error state
+                    input.classList.remove('error');
+                    const formGroup = input.closest('.form-group');
+                    if (formGroup) {
+                        formGroup.classList.remove('error');
+                    }
+                    
+                    // Check required fields
+                    if (input.hasAttribute('required') && !input.value.trim()) {
+                        markAsError(input, 'This field is required');
+                        isValid = false;
+                        return;
+                    }
+                    
+                    // Check patterns
+                    if (input.hasAttribute('pattern') && input.value.trim()) {
+                        const pattern = new RegExp(input.getAttribute('pattern'));
+                        if (!pattern.test(input.value)) {
+                            markAsError(input, 'Invalid format');
+                            isValid = false;
+                            return;
+                        }
+                    }
+                    
+                    // Check email
+                    if (input.type === 'email' && input.value.trim()) {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailPattern.test(input.value)) {
+                            markAsError(input, 'Invalid email format');
+                            isValid = false;
+                            return;
+                        }
+                    }
+                    
+                    // Check min/max length
+                    if (input.hasAttribute('minlength') && input.value.trim()) {
+                        const minLength = parseInt(input.getAttribute('minlength'));
+                        if (input.value.length < minLength) {
+                            markAsError(input, `Minimum length is ${minLength} characters`);
+                            isValid = false;
+                            return;
+                        }
+                    }
+                    
+                    if (input.hasAttribute('maxlength') && input.value.trim()) {
+                        const maxLength = parseInt(input.getAttribute('maxlength'));
+                        if (input.value.length > maxLength) {
+                            markAsError(input, `Maximum length is ${maxLength} characters`);
+                            isValid = false;
+                            return;
+                        }
+                    }
+                    
+                    // Check passwords match
+                    if (input.id === 'password2') {
+                        const password = document.getElementById('password').value;
+                        if (input.value !== password) {
+                            markAsError(input, 'Passwords do not match');
+                            isValid = false;
+                            return;
+                        }
+                    }
+                });
+                
+                return isValid;
+            }
+            
+            function markAsError(input, message) {
+                input.classList.add('error');
+                const formGroup = input.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.add('error');
+                    const smallEl = formGroup.querySelector('small');
+                    if (smallEl) {
+                        // Store original help text if not already stored
+                        if (!input.hasAttribute('data-help-text')) {
+                            input.setAttribute('data-help-text', smallEl.textContent);
+                        }
+                        smallEl.textContent = message;
+                    }
+                }
+            }
+            
+            function showToast(message) {
+                const toast = document.getElementById('toast');
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

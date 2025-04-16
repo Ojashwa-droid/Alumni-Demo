@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account</title>
+    <link rel="stylesheet" href="register.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-section">
+        <div class="content">
+          <h1>Join Our <span class="accent">Community</span></h1>
+          <p>Create an account to connect with other students, teachers, and alumni. Access exclusive resources and stay updated with the latest opportunities.</p>
+        </div>
+      </div>
+      
+      <div class="right-section">
+        <button class="cancel-button" onclick="window.history.back()">✕</button>
+        <h2>Create Your Account</h2>
+        
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="username" class="required">Username</label>
+            <input type="text" id="username" placeholder="Choose a unique username" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="required">Email Address</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password" class="required">Password</label>
+            <input type="password" id="password" placeholder="Create a strong password" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmPassword" class="required">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="role" class="required">I am registering as</label>
+            <select id="role" required>
+              <option value="" disabled selected>-- Select your role --</option>
+              <option value="student">Student</option>
+              <option value="alumni">Alumni</option>
+            </select>
+          </div>
+          
+          <div id="alumniFields">
+            <div class="form-group">
+              <label for="graduationYear">Graduation Year</label>
+              <input type="number" id="graduationYear" placeholder="Year you graduated">
+            </div>
+            
+            <div class="form-group">
+              <label for="currentCompany">Current Company</label>
+              <input type="text" id="currentCompany" placeholder="Where do you work?">
+            </div>
+            
+            <div class="form-group">
+              <label for="jobTitle">Job Title</label>
+              <input type="text" id="jobTitle" placeholder="Your current position">
+            </div>
+            
+            <div class="form-group">
+              <label for="linkedin">LinkedIn Profile</label>
+              <input type="url" id="linkedin" placeholder="https://linkedin.com/in/your-profile">
+            </div>
+            
+            <div class="form-group">
+              <label for="bio">Short Bio</label>
+              <textarea id="bio" placeholder="Tell us about yourself and your journey"></textarea>
+            </div>
+          </div>
+          
+          <button type="submit" class="register">Create Account</button>
+        </form>
+
+        <div class="login-link">
+          Already have an account? <a href="../Login/login.html">Login here</a>
+        </div>
+      </div>
+    </div>
+<script src="../CustomAlerts/custom-alerts.js"></script>
+  <script>
+    document.getElementById("role").addEventListener("change", function () {
+      const alumniFields = document.getElementById("alumniFields");
+      if (this.value === "alumni") {
+        alumniFields.style.display = "block";
+      } else {
+        alumniFields.style.display = "none";
+      }
+    });
+
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const role = document.getElementById("role").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      const data = {
+        username,
+        email,
+        password,
+        password2: confirmPassword,
+        role
+      };
+
+      if (role === "alumni") {
+        const graduationYear = document.getElementById("graduationYear").value;
+        const currentCompany = document.getElementById("currentCompany").value;
+        const jobTitle = document.getElementById("jobTitle").value;
+        const bio = document.getElementById("bio").value;
+        const linkedin = document.getElementById("linkedin").value;
+
+        if (graduationYear) data.graduation_year = graduationYear;
+        if (currentCompany) data.current_company = currentCompany;
+        if (jobTitle) data.job_title = jobTitle;
+        if (bio) data.bio = bio;
+        if (linkedin) data.linkedin_url = linkedin;
+      }
+
+        try {
+      const response = await fetch("http://51.20.139.242/users/register/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const resData = await response.json();
+
+      if (response.ok) {
+        // Save tokens to localStorage
+        if (resData.access_token) {
+          localStorage.setItem('access_token', resData.access_token);
+        }
+        if (resData.refresh_token) {
+          localStorage.setItem('refresh_token', resData.refresh_token);
+        }
+        
+        // Set a user authentication flag
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('username', username);
+        
+        showCustomAlert("Account created successfully! Redirecting...", "success");
+
+        setTimeout(() => {
+          window.location.href = `../Home/home.html?username=${encodeURIComponent(username)}`;
+        }, 1000);
+      
+      } else {
+        showCustomAlert("Registration failed: " + resData.detail, "error");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      showCustomAlert("Error: " + err.message, "error");
+    }
+    });
+  </script>
+</body>
+</html>

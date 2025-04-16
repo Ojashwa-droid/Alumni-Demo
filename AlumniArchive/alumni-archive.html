@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Archive - SRM Alumni Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="alumni-archive.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-circle">SRM</div>
+            <div class="logo-text">SRM <span>Alumni Network</span></div>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="alumni-archive.html">Alumni Archive</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="mentors.html">Mentors</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="login-btn">Login</button>
+                <button class="register-btn">Register</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Alumni Archive</h1>
+        <p>Explore our diverse network of SRM alumni making an impact across industries worldwide. Connect, network, and get inspired by their professional journeys.</p>
+    </section>
+
+    <div class="archive-container">
+        <div class="filter-section">
+            <h3>Filter Alumni</h3>
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label for="batch">Graduation Batch</label>
+                    <select id="batch">
+                        <option value="">All Batches</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="program">Program</label>
+                    <select id="program">
+                        <option value="">All Programs</option>
+                        <option value="btech">B.Tech</option>
+                        <option value="mtech">M.Tech</option>
+                        <option value="mba">MBA</option>
+                        <option value="bba">BBA</option>
+                        <option value="phd">Ph.D.</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="industry">Industry</label>
+                    <select id="industry">
+                        <option value="">All Industries</option>
+                        <option value="tech">Technology</option>
+                        <option value="finance">Finance & Banking</option>
+                        <option value="health">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="consulting">Consulting</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label for="location">Location</label>
+                    <select id="location">
+                        <option value="">All Locations</option>
+                        <option value="india">India</option>
+                        <option value="usa">USA</option>
+                        <option value="uk">UK</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="searchKeyword">Search</label>
+                    <input type="text" id="searchKeyword" placeholder="Search by name, company or role">
+                </div>
+            </div>
+            <div class="filter-buttons">
+                <button class="reset-btn">Reset</button>
+                <button class="apply-btn">Apply Filters</button>
+            </div>
+        </div>
+
+        <div class="alumni-grid">
+            <!-- Alumni Card 1 -->
+            <div class="alumni-card">
+                <div class="alumni-image">
+                    <img src="/api/placeholder/400/320" alt="Aarav Sharma">
+                </div>
+                <div class="alumni-info">
+                    <h3 class="alumni-name">Aarav Sharma</h3>
+                    <div class="alumni-batch">Batch of 2020 | B.Tech Computer Science</div>
+                    <div class="alumni-role">Software Engineer</div>
+                    <div class="alumni-company">Google, Bangalore</div>
+                    <div class="alumni-social">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">tw</a>
+                        <a href="#" class="social-icon">em</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Card 2 -->
+            <div class="alumni-card">
+                <div class="alumni-image">
+                    <img src="/api/placeholder/400/320" alt="Priya Patel">
+                </div>
+                <div class="alumni-info">
+                    <h3 class="alumni-name">Priya Patel</h3>
+                    <div class="alumni-batch">Batch of 2019 | MBA Finance</div>
+                    <div class="alumni-role">Investment Analyst</div>
+                    <div class="alumni-company">Morgan Stanley, Mumbai</div>
+                    <div class="alumni-social">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">tw</a>
+                        <a href="#" class="social-icon">em</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Card 3 -->
+            <div class="alumni-card">
+                <div class="alumni-image">
+                    <img src="/api/placeholder/400/320" alt="Rahul Verma">
+                </div>
+                <div class="alumni-info">
+                    <h3 class="alumni-name">Rahul Verma</h3>
+                    <div class="alumni-batch">Batch of 2018 | B.Tech Mechanical</div>
+                    <div class="alumni-role">Project Manager</div>
+                    <div class="alumni-company">Tata Motors, Pune</div>
+                    <div class="alumni-social">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">tw</a>
+                        <a href="#" class="social-icon">em</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Card 4 -->
+            <div class="alumni-card">
+                <div class="alumni-image">
+                    <img src="/api/placeholder/400/320" alt="Aisha Khan">
+                </div>
+                <div class="alumni-info">
+                    <h3 class="alumni-name">Aisha Khan</h3>
+                    <div class="alumni-batch">Batch of 2021 | M.Tech Biotechnology</div>
+                    <div class="alumni-role">Research Scientist</div>
+                    <div class="alumni-company">Biocon, Bangalore</div>
+                    <div class="alumni-social">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">tw</a>
+                        <a href="#" class="social-icon">em</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Card 5 -->
+            <div class="alumni-card">
+                <div class="alumni-image">
+                    <img src="/api/placeholder/400/320" alt="Vikram Singh">
+                </div>
+                <div class="alumni-info">
+                    <h3 class="alumni-name">Vikram Singh</h3>
+                    <div class="alumni-batch">Batch of 2017 | B.Tech Electronics</div>
+                    <div class="alumni-role">Hardware Engineer</div>
+                    <div class="alumni-company">Intel, Bangalore</div>
+                    <div class="alumni-social">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">tw</a>
+                        <a href="#" class="social-icon">em</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Card 6 -->
+            <div class="alumni-card">
+                <div class="alumni-image">
+                    <img src="/api/placeholder/400/320" alt="Neha Gupta">
+                </div>
+                <div class="alumni-info">
+                    <h3 class="alumni-name">Neha Gupta</h3>
+                    <div class="alumni-batch">Batch of 2022 | BBA</div>
+                    <div class="alumni-role">Marketing Specialist</div>
+                    <div class="alumni-company">Unilever, Delhi</div>
+                    <div class="alumni-social">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">tw</a>
+                        <a href="#" class="social-icon">em</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <div class="page-item active">1</div>
+            <div class="page-item">2</div>
+            <div class="page-item">3</div>
+            <div class="page-item">4</div>
+            <div class="page-item">5</div>
+            <div class="page-item">></div>
+        </div>
+    </div>
+
+    <!-- HTML structure to add to your page -->
+<div class="alumni-stats-container">
+    <div id="alumni-stats" class="alumni-stats">
+        <!-- Statistics will be loaded here by JavaScript -->
+    </div>
+</div>
+
+<script>
+    // Alumni Statistics Feature
+// This script aggregates alumni data and displays statistics similar to LinkedIn
+
+// DOM Elements
+const alumniStatsContainer = document.getElementById('alumni-stats');
+
+// API endpoint to fetch all alumni (you may want to create a specific statistics endpoint)
+const STATS_API_ENDPOINT = '/alumni/stats/';
+
+// Load alumni statistics when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Only load stats if the container exists
+    if (alumniStatsContainer) {
+        fetchAlumniStatistics();
+    }
+});
+
+// Function to fetch alumni statistics from API
+async function fetchAlumniStatistics() {
+    try {
+        // Show loading state
+        alumniStatsContainer.innerHTML = '<div class="loading">Loading alumni statistics...</div>';
+        
+        // Fetch data from API
+        const response = await fetch(STATS_API_ENDPOINT);
+        
+        if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Update UI with the response data
+        renderAlumniStatistics(data);
+        
+    } catch (error) {
+        console.error('Failed to fetch alumni statistics:', error);
+        alumniStatsContainer.innerHTML = `
+            <div class="error-message">
+                <h3>Unable to load alumni statistics</h3>
+                <p>Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+// Function to render alumni statistics
+function renderAlumniStatistics(data) {
+    // Check if we have the required data
+    if (!data || !data.total_alumni) {
+        alumniStatsContainer.innerHTML = '<div class="error-message">No statistics data available</div>';
+        return;
+    }
+    
+    // Create the statistics overview
+    const statsOverview = document.createElement('div');
+    statsOverview.className = 'alumni-stats-overview';
+    statsOverview.innerHTML = `
+        <h2>${data.total_alumni.toLocaleString()} alumni</h2>
+        <div class="stats-period">
+            <span>Start year</span>
+            <input type="number" id="stats-start-year" value="${data.start_year || 2000}" min="1950" max="${new Date().getFullYear()}">
+            <span>End year</span>
+            <input type="number" id="stats-end-year" value="${data.end_year || new Date().getFullYear()}" min="1950" max="${new Date().getFullYear()}">
+        </div>
+    `;
+    
+    // Create the statistics sections
+    const statsSections = document.createElement('div');
+    statsSections.className = 'alumni-stats-sections';
+    
+    // Where they work section
+    const whereTheyWorkSection = createStatsSection(
+        'Where they work',
+        data.companies || [],
+        'company_name',
+        'alumni_count'
+    );
+    
+    // Where they live section
+    const whereTheyLiveSection = createStatsSection(
+        'Where they live',
+        data.locations || [],
+        'location_name',
+        'alumni_count'
+    );
+    
+    // What they studied section
+    const whatTheyStudiedSection = createStatsSection(
+        'What they studied',
+        data.programs || [],
+        'program_name',
+        'alumni_count'
+    );
+    
+    // Add sections to the container
+    statsSections.appendChild(whereTheyWorkSection);
+    statsSections.appendChild(whereTheyLiveSection);
+    statsSections.appendChild(whatTheyStudiedSection);
+    
+    // Clear the container and add the new content
+    alumniStatsContainer.innerHTML = '';
+    alumniStatsContainer.appendChild(statsOverview);
+    alumniStatsContainer.appendChild(statsSections);
+    
+    // Add event listeners to the year inputs
+    setupYearFilterEvents();
+}
+
+// Function to create a statistics section
+function createStatsSection(title, items, labelField, countField) {
+    const section = document.createElement('div');
+    section.className = 'stats-section';
+    
+    const header = document.createElement('div');
+    header.className = 'stats-section-header';
+    header.innerHTML = `
+        <h3>${title}</h3>
+        <button class="add-filter-btn">+ Add</button>
+    `;
+    
+    const list = document.createElement('div');
+    list.className = 'stats-list';
+    
+    // Sort items by count (descending)
+    const sortedItems = [...items].sort((a, b) => b[countField] - a[countField]);
+    
+    // Create list items
+    sortedItems.forEach(item => {
+        const listItem = document.createElement('div');
+        listItem.className = 'stats-list-item';
+        
+        // Calculate percentage for the progress bar
+        const percentage = items.length > 0 
+            ? (item[countField] / items.reduce((sum, current) => sum + current[countField], 0)) * 100
+            : 0;
+        
+        listItem.innerHTML = `
+            <div class="stats-item-info">
+                <span class="stats-item-count">${item[countField]}</span>
+                <span class="stats-item-label">${item[labelField]}</span>
+            </div>
+            <div class="stats-item-bar">
+                <div class="stats-item-progress" style="width: ${percentage}%"></div>
+            </div>
+        `;
+        
+        list.appendChild(listItem);
+    });
+    
+    section.appendChild(header);
+    section.appendChild(list);
+    
+    return section;
+}
+
+// Function to setup event listeners for year filters
+function setupYearFilterEvents() {
+    const startYearInput = document.getElementById('stats-start-year');
+    const endYearInput = document.getElementById('stats-end-year');
+    
+    if (startYearInput && endYearInput) {
+        startYearInput.addEventListener('change', () => {
+            // Ensure start year is not after end year
+            if (parseInt(startYearInput.value) > parseInt(endYearInput.value)) {
+                startYearInput.value = endYearInput.value;
+            }
+            fetchAlumniStatistics();
+        });
+        
+        endYearInput.addEventListener('change', () => {
+            // Ensure end year is not before start year
+            if (parseInt(endYearInput.value) < parseInt(startYearInput.value)) {
+                endYearInput.value = startYearInput.value;
+            }
+            fetchAlumniStatistics();
+        });
+    }
+}
+</script>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <div class="logo-circle">SRM</div>
+                    <div class="logo-text">SRM <span>Alumni Network</span></div>
+                </div>
+                <p>Connecting SRM graduates worldwide. Build relationships, share opportunities, and grow together.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="alumni-archive.html">Alumni Archive</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Career Support</a></li>
+                        <li><a href="#">Mentorship Program</a></li>
+                        <li><a href="#">Networking Events</a></li>
+                        <li><a href="#">Reunion Information</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 SRM Alumni Network. All rights reserved.
+        </div>
+    </footer>
+    <script src="alumni-archive.js"></script>
+    <script>
+        // Get the batch select element and populate it with years
+        document.addEventListener('DOMContentLoaded', () => {
+            const batchSelect = document.getElementById('batch');
+            
+            // Clear existing options except the first one
+            while (batchSelect.options.length > 1) {
+                batchSelect.remove(1);
+            }
+            
+            // Get current year
+            const currentYear = new Date().getFullYear();
+            
+            // Add last 10 years as options
+            for (let year = currentYear; year >= currentYear - 10; year--) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                batchSelect.appendChild(option);
+            }
+        });
+    </script>
+</body>
+</html>

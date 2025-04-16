@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Your Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-container {
+            display: flex;
+            width: 90%;
+            max-width: 900px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .image-section {
+            flex: 1;
+            background: linear-gradient(135deg, #1a3a6c 0%, #2563eb 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+        
+        .image-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .image-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .image-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .form-section {
+            flex: 1;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-section h2 {
+            color: #1a365d;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid #3182ce;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #2b6cb0;
+            box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+        }
+        
+        .login-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.2rem;
+        }
+        
+        .login-button {
+            background-color: #f97316;
+            color: white;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .login-button:hover {
+            background-color: #ea580c;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+        
+        .login-button:active {
+            transform: translateY(-1px);
+        }
+        
+        .form-footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #4a5568;
+        }
+        
+        .form-footer a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .image-section {
+                min-height: 220px;
+            }
+            
+            .form-section {
+                padding: 1.8rem;
+            }
+        }
+        
+        .cancel-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: transparent;
+            border: none;
+            color: #4a5568;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: color 0.2s ease;
+            z-index: 10;
+        }
+        
+        .cancel-button:hover {
+            color: #f97316;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <button class="cancel-button" onclick="window.history.back()">✕</button>
+        <div class="image-section">
+            <div class="image-text">
+                <h1>Welcome Back</h1>
+                <p>Sign in to connect with other students, teachers, and alumni. Access exclusive resources and stay updated with the latest opportunities.</p>
+            </div>
+        </div>
+        <div class="form-section">
+            <h2>Sign In</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="login-button-container">
+                    <button type="submit" class="login-button">Login</button>
+                </div>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="../Register/register.html">Register here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../CustomAlerts/custom-alerts.js"></script>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+    
+    const usernameOrEmail = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    try {
+        const response = await fetch("http://51.20.139.242/users/login/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username_or_email: usernameOrEmail,
+                password: password
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Store tokens consistent with names used in home page
+            localStorage.setItem("refresh_token", result.refresh);
+            localStorage.setItem("access_token", result.access);
+            localStorage.setItem("isAuthenticated", "true");
+            
+            // Also store the username for the profile initials
+            localStorage.setItem("username", usernameOrEmail);
+            showCustomAlert("Login successful! Redirecting...", "success");
+
+            setTimeout(() => {
+                window.location.href = "../Home/home.html";
+            }, 1000); 
+            
+        } else {
+            showCustomAlert("Login failed: Invalid credentials", "error");
+        }
+    } catch (err) {
+        console.error(err);
+        showCustomAlert("Error : Something went wrong. Please try again.", "error", 3000);
+    }
+});
+    </script>
+</body>
+</html>

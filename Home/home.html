@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>SRM Alumni Network</title>
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <!-- Placeholder logo -->
+                <div style="width: 40px; height: 40px; background: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 10px;">SRM</div>
+                <h1>SRM <span>Alumni Network</span></h1>
+            </div>
+
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Alumni Archive</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Mentors</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-btn login-btn" id="loginBtn" > <a href="../Login/login.html" style="text-decoration: none; color: #e6f0fd;">Login</a></button>
+                <button class="nav-btn register-btn" id="registerBtn"> <a href="../Register/register.html" style="text-decoration: none; color: #e6f0fd;">Register</a> </button>
+                <button class="nav-btn logout-btn" id="logoutBtn">Logout</button>
+                
+                <div class="profile" id="profileSection">
+                    <a href="../Pofile/profile.html" class="profile-link" id="profileLink">
+                        <div class="profile-circle">JS</div>
+                    </a>
+                    <!-- <div class="profile-dropdown">
+                        <a href="../Pofile/profile.html">View Profile</a>
+                        <a href="#">Edit Profile</a>
+                        <a href="#">Dashboard</a>
+                        <a id="logoutBtn">Logout</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Connect with SRM Alumni Community</h2>
+            <p>Join our vibrant network of professionals, entrepreneurs, and leaders who share a common journey through SRM. Discover opportunities, mentorship, and lifelong connections.</p>
+            <a href="#" class="cta-btn">Explore the Network</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-title">
+                <h3>Why Join Our Network?</h3>
+                <p>Discover the benefits of being part of the SRM Alumni community</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h4>Networking Opportunities</h4>
+                    <p>Connect with alumni across industries and geographies to expand your professional network.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h4>Mentorship Programs</h4>
+                    <p>Receive guidance from experienced alumni or give back by mentoring current students.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Exclusive Events</h4>
+                    <p>Attend alumni meetups, professional development workshops, and industry-specific conferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Only visible for logged in users -->
+    <section class="members-only" id="membersOnlySection" style="display: none;">
+        <div class="members-container">
+            <div class="section-title">
+                <h3>Exclusive Member Content</h3>
+                <p>Welcome back! Access special resources available only to verified alumni</p>
+            </div>
+
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-icon">🌟</div>
+                    <h4>Job Opportunities</h4>
+                    <p>Exclusive job postings from fellow alumni and partner companies.</p>
+                    <a href="#" class="member-link">View Opportunities</a>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-icon">📅</div>
+                    <h4>Upcoming Reunions</h4>
+                    <p>Stay updated on batch reunions and department meetups.</p>
+                    <a href="#" class="member-link">View Calendar</a>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-icon">🎓</div>
+                    <h4>Alumni Directory</h4>
+                    <p>Connect directly with fellow alumni across graduating years.</p>
+                    <a href="#" class="member-link">Search Directory</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle mobile navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Example: Check if user is logged in using localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+            toggleAuthState(isAuthenticated);
+            
+            // Set profile initials if user is logged in
+            if (isAuthenticated) {
+                const username = localStorage.getItem('username') || 'User';
+                const initials = username.substring(0, 1).toUpperCase();
+                document.querySelector('.profile-circle').textContent = initials;
+            }
+            
+            // Add event listeners for auth buttons
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                window.location.href = "../Login/login.html";
+            });
+            
+            document.getElementById('registerBtn').addEventListener('click', () => {
+                window.location.href = "../Register/register.html";
+            });
+
+            document.getElementById('profileLink').addEventListener('click', () => {
+                window.location.href = "../Pofile/profile.html";
+            });
+            
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
+                localStorage.removeItem('isAuthenticated');
+                localStorage.removeItem('username');
+                toggleAuthState(false);
+                showCustomAlert('You have been logged out successfully!');
+            });
+        });
+
+        function toggleAuthState(isLoggedIn) {
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const profileSection = document.getElementById('profileSection');
+
+            if (isLoggedIn) {
+                loginBtn.style.display = 'none';
+                registerBtn.style.display = 'none';
+                logoutBtn.style.display = 'block';
+                profileSection.style.display = 'block';
+                membersOnlySection.style.display = 'block'; 
+            } else {
+                loginBtn.style.display = 'block';
+                registerBtn.style.display = 'block';
+                logoutBtn.style.display = 'none';
+                profileSection.style.display = 'none';
+                membersOnlySection.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

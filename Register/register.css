@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    padding: 20px;
+  }
+
+  .container {
+    display: flex;
+    width: 900px;
+    max-width: 95%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+
+  .left-section {
+    /* background: linear-gradient(135deg, #2c3e50, #4a6572); */
+    background: linear-gradient(135deg, #1a3a6c 0%, #2563eb 100%);
+    color: white;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+  }
+
+  .left-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("placeholder image");
+    z-index: 0;
+  }
+
+  .left-section .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .left-section h1 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  .left-section .accent {
+    color: #f97316;
+  }
+
+  .left-section p {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    font-size: 16px;
+    opacity: 0.9;
+  }
+
+  .right-section {
+    background-color: white;
+    width: 60%;
+    padding: 40px 30px;
+    overflow-y: auto;
+    max-height: 600px;
+  }
+
+  .right-section h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 14px;
+  }
+
+  .required::after {
+    content: '*';
+    color: #e53e3e;
+    margin-left: 3px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #f9fafb;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(14, 61, 202, 0.2);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #a0aec0;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  #alumniFields {
+    display: none;
+    padding: 15px;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    margin: 15px 0;
+    border-left: 3px solid #0e42d1;
+  }
+
+  #alumniFields .form-group:last-child {
+    margin-bottom: 0;
+  }
+
+  button.register {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    background: linear-gradient(to right, #e25b07, #f97316);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  button.register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+  }
+
+  button.register:active {
+    transform: translateY(0);
+  }
+
+  .login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #4a5568;
+  }
+
+  .login-link a {
+    color: #304bdf;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .login-link a:hover {
+    color: #3149d4;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      max-height: none;
+    }
+    
+    .left-section, .right-section {
+      width: 100%;
+    }
+    
+    .left-section {
+      padding: 30px 20px;
+    }
+  }
+
+  .cancel-button {
+position: fixed;          
+top: 20px;
+right: 20px;
+background-color: transparent;
+border: none;
+color: #4a5568;
+font-size: 1.5rem;
+cursor: pointer;
+width: 30px;
+height: 30px;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: color 0.2s ease;
+z-index: 1000;           
+padding: 0;
+margin: 0;
+line-height: 1;
+}
+
+.cancel-button:hover {
+color: #f97316;
+}
+
+.right-section {
+position: relative;      
+}
+
+.right-section .cancel-button {
+position: absolute;      
+top: 20px;
+right: 20px;
+}
