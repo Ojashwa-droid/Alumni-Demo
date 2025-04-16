@@ -86,7 +86,6 @@ async function fetchAlumni() {
     }
 }
 
-// Function to update the alumni grid with API data
 function updateAlumniGrid(alumniData) {
     // Clear the current grid
     alumniGrid.innerHTML = '';
@@ -117,12 +116,13 @@ function updateAlumniGrid(alumniData) {
         alumniCard.className = 'alumni-card';
         
         // Determine program type based on job title or other fields
-        // This is a placeholder - you may need to adjust based on your actual data
         let programType = 'B.Tech'; // Default
         
         alumniCard.innerHTML = `
             <div class="alumni-image">
-                <img src="${alumni.profile_picture || '/api/placeholder/400/320'}" alt="${alumni.user || 'Alumni'}">
+                <img src="${alumni.profile_picture || 'https://avatar.iran.liara.run/public'}" 
+                     alt="${alumni.user || 'Alumni'}" 
+                     onerror="this.src='/api/placeholder/400/320';">
             </div>
             <div class="alumni-info">
                 <h3 class="alumni-name">${alumni.user || 'Alumni'}</h3>
@@ -140,6 +140,61 @@ function updateAlumniGrid(alumniData) {
         alumniGrid.appendChild(alumniCard);
     });
 }
+
+// Function to update the alumni grid with API data
+// function updateAlumniGrid(alumniData) {
+//     // Clear the current grid
+//     alumniGrid.innerHTML = '';
+    
+//     // If no results, display a message
+//     if (alumniData.length === 0) {
+//         alumniGrid.innerHTML = `
+//             <div class="no-results">
+//                 <h3>No alumni found</h3>
+//                 <p>Try adjusting your filters or search term.</p>
+//             </div>
+//         `;
+//         return;
+//     }
+    
+//     // Calculate pagination
+//     const startIndex = (currentPage - 1) * itemsPerPage;
+//     const endIndex = startIndex + itemsPerPage;
+//     const paginatedData = alumniData.slice(startIndex, endIndex);
+    
+//     // Create alumni cards for each item in the data
+//     paginatedData.forEach(alumni => {
+//         // Extract graduation year from the API response
+//         const graduationYear = new Date(alumni.graduation_year * 1000).getFullYear();
+        
+//         // Create the alumni card
+//         const alumniCard = document.createElement('div');
+//         alumniCard.className = 'alumni-card';
+        
+//         // Determine program type based on job title or other fields
+//         // This is a placeholder - you may need to adjust based on your actual data
+//         let programType = 'B.Tech'; // Default
+        
+//         alumniCard.innerHTML = `
+//             <div class="alumni-image">
+//                 <img src="${alumni.profile_picture || '/api/placeholder/400/320'}" alt="${alumni.user || 'Alumni'}">
+//             </div>
+//             <div class="alumni-info">
+//                 <h3 class="alumni-name">${alumni.user || 'Alumni'}</h3>
+//                 <div class="alumni-batch">Batch of ${graduationYear} | ${programType}</div>
+//                 <div class="alumni-role">${alumni.job_title || 'Not specified'}</div>
+//                 <div class="alumni-company">${alumni.current_company || 'Not specified'}</div>
+//                 <div class="alumni-social">
+//                     ${alumni.linkedin_url ? `<a href="${alumni.linkedin_url}" class="social-icon" target="_blank">in</a>` : ''}
+//                     <a href="#" class="social-icon">tw</a>
+//                     <a href="#" class="social-icon">em</a>
+//                 </div>
+//             </div>
+//         `;
+        
+//         alumniGrid.appendChild(alumniCard);
+//     });
+// }
 
 // Function to update pagination based on total results
 function updatePagination(totalItems) {

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM Alumni Network - Blog</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="blogs.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-circle" style="background-color: #f37021; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">SRM</div>
+                    <div class="logo-text">SRM <span>Alumni Network</span></div>
+                </a>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="alumni-archive.html">Alumni Archive</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="blogs.html" class="active">Blogs</a></li>
+                        <li><a href="mentors.html">Mentors</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                    </ul>
+                </nav>
+
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="register.html" class="btn btn-register">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Alumni Blog</h1>
+
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="blog-search" class="search-input" placeholder="Search for blogs...">
+                <button id="search-button" class="search-btn">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+            <div class="filter-options">
+                <div class="filter-chip active" data-category="all">All</div>
+                <div class="filter-chip" data-category="career">Career</div>
+                <div class="filter-chip" data-category="education">Education</div>
+                <div class="filter-chip" data-category="technology">Technology</div>
+                <div class="filter-chip" data-category="campus">Campus Life</div>
+                <div class="filter-chip" data-category="reunion">Reunions</div>
+            </div>
+        </section>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Loading blogs...</p>
+        </div>
+
+        <div id="blogs-container" class="blogs-container">
+            <!-- Blog cards will be dynamically loaded here -->
+        </div>
+
+        <div id="no-results" class="no-results" style="display: none;">
+            <h3>No blogs found</h3>
+            <p>Try adjusting your search terms or filters</p>
+        </div>
+
+        <div id="pagination" class="pagination">
+            <!-- Pagination buttons will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="alumni-archive.html">Alumni Directory</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="mentors.html">Mentorship</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Career Services</a></li>
+                        <li><a href="#">Networking Opportunities</a></li>
+                        <li><a href="#">Alumni Benefits</a></li>
+                        <li><a href="#">Giving Back</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SRM Alumni Network. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="blogs.js"></script>
+</body>
+</html>
